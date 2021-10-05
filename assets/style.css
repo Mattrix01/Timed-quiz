@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Saira+Condensed:wght@400;500;600&display=swap");
+
+:root {
+  background-color: #edf6f9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", sans-serif;
+  /* font-family: "Saira Condensed", sans-serif; */
+  font-size: 1.5rem;
+}
+
+/* flex containers */
+.flex-container {
+  width: 100vm;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #006d77;
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
