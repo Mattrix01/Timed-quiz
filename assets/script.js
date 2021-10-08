@@ -7,17 +7,45 @@ const choice4 = document.querySelector("#answer4");
 
 let chosenquestion = [];
 let answers = [];
-// questions array which questions im on:
+// array of objects containing questions and answers:
 
-// let questions = [
-//     {
-//         question: "What the question is?"
-//         option1: '1',
-//         option2: '2',
-//         option3: '3',
-//         option4: '4',
-//     },
-// ]
+var questions = [
+  {
+    question: "What does DOM stand for?",
+    choices: [
+      "Detailed Oriantated Method",
+      "Data Ordered Method",
+      "Document Object Model",
+      "Dinner On Matress",
+    ],
+    correctAnswer: 2,
+  },
+  {
+    question: "A JavaScript File Has An Extension of?",
+    choices: [".js", ".javascript", ".java", ".xml"],
+    correctAnswer: 0,
+  },
+  {
+    question: "What is the correct syntax character to seperate statements?",
+    choices: ["}", ";", "]", "#"],
+    correctAnswer: 1,
+  },
+  {
+    question: "What is the correct syntax for an array?",
+    choices: ["{}", "[]", "**", "//"],
+    correctAnswer: 1,
+  },
+  {
+    question: "A integer is A number with...?",
+    choices: [
+      "A decimal fraction",
+      "A seperation",
+      "A personality",
+      "No decimal fraction",
+    ],
+    correctAnswer: 3,
+  },
+];
 
 // timer
 let counter = 50;
