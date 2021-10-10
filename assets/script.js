@@ -1,3 +1,5 @@
+// Maybe could wrap everything in a function?
+
 // selectors
 const question = document.querySelector("#question");
 const choice1 = document.querySelector("#answer1");
