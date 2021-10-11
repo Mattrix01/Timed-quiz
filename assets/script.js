@@ -1,47 +1,70 @@
 // My array of question, options and answer objects
-var questions = [
+const codeQuestions = [
   {
-    question: "What does DOM stand for?",
+    title: "What does DOM stand for?",
     options: [
       "Delete Original Method",
       "Data Ordered Method",
       "Document Object Model",
       "Dinner On Matress",
     ],
-    correctOption: 2,
+    correctOption: "Document Object Model",
   },
   {
-    options: "A JavaScript File Has An Extension of?",
-    choices: [".js", ".javascript", ".java", ".xml"],
-    correctOption: 0,
+    title: "A JavaScript File Has An Extension of?",
+    options: [".js", ".javascript", ".java", ".xml"],
+    correctOption: ".js",
   },
   {
-    question: "What is the correct syntax character to seperate statements?",
+    title: "What is the correct syntax character to seperate statements?",
     options: ["}", ";", "]", "#"],
-    correctOption: 1,
+    correctOption: ";",
   },
   {
-    question: "What is the correct syntax for an array?",
+    title: "What is the correct syntax for an array?",
     options: ["{}", "[]", "**", "//"],
-    correctOption: 1,
+    correctOption: "[]",
   },
   {
-    question: "A integer is A number with...?",
-    choices: [
+    title: "A integer is A number with...?",
+    options: [
       "A decimal fraction",
       "A seperation",
       "A personality",
       "No decimal fraction",
     ],
-    correctOption: 3,
+    correctOption: "No decimal fraction",
   },
 ];
 
+const constructOptions = function (options) {};
+
+const constructQuestionContainer = function (question) {
+  console.log(question);
+  // contsruct container div
+  const questionContainer = document.createElement("div");
+  questionContainer.setAttribute("class", "container question-container");
+
+  console.log(questionContainer);
+
+  // construct h2 element
+  const questionH2 = document.createElement("h2");
+  questionH2.setAttribute("class", "question");
+  questionH2.textContent = question.title;
+
+  // construct options div
+  constructOptions(question.options);
+};
+
 // render question container
 const renderQuestionContainer = function () {
-  console.log("renderquestioncontainer");
+  console.log(currentQuestion);
   //get current question
-  //contrust html for the question container
+  const currentQuestion = codeQuestions[0];
+  console.log(currentQuestion);
+
+  //construct html for the question container
+  constructQuestionContainer(currentQuestion);
   //append the container to document
 };
 
