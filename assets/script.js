@@ -37,4 +37,18 @@ var questions = [
   },
 ];
 
-console.log("highscores");
+// render question container
+const renderQuestionContainer = function () {};
+
+// function to execute when start quiz is called
+const startQuiz = function () {
+  // console.log("start quiz");
+  // remove start container
+  // render question container
+};
+
+// target the start quiz button
+const startButton = document.getElementById("start-quiz");
+
+// add a click event listener and start the quiz
+startButton.addEventListener("click", startQuiz);
