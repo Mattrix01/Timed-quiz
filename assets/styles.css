@@ -319,6 +319,27 @@ button:hover::after {
   font-size: 2rem;
 }
 
+.answer-alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.answer-alert-success {
+  color: green;
+  /* background-color: var(--indigo-dye);
+  border-color: var(--alert-success-border); */
+}
+
+.answer-alert-danger {
+  color: red;
+  /* background-color: var(--indigo-dye);
+  border-color: var(--alert-danger-border); */
+}
+
 /* Resizing properties for phone screen */
 @media screen and (max-width: 576px) {
   .nav-container {
