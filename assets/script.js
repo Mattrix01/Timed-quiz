@@ -26,7 +26,7 @@ var questions = [
   },
   {
     question: "A integer is A number with...?",
-    options: [
+    choices: [
       "A decimal fraction",
       "A seperation",
       "A personality",
@@ -35,3 +35,5 @@ var questions = [
     correctOption: 3,
   },
 ];
+
+console.log("highscores");
