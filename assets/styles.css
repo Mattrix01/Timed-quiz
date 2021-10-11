@@ -365,6 +365,12 @@ button:hover::after {
   color: green;
 }
 
+.game-over {
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
+    url(./background-matrix.jpg);
+}
+
 /* Resizing properties for phone screen */
 @media screen and (max-width: 576px) {
   .nav-container {
