@@ -108,7 +108,7 @@ button {
 /* Button begin styling */
 .button-begin,
 .button-begin::after {
-  width: 380px;
+  width: 350px;
   height: 86px;
   font-size: 36px;
   font-family: "Orbitron", sans-serif;
@@ -205,7 +205,7 @@ button {
 /* Button question styling */
 button,
 button::after {
-  width: 400px;
+  width: 100%;
   height: 50px;
   font-size: 36px;
   font-family: "Orbitron", sans-serif;
@@ -340,6 +340,31 @@ button:hover::after {
   border-color: var(--alert-danger-border); */
 }
 
+.score-form {
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
+    url(./background-matrix.jpg);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-item {
+  margin: 1rem 0;
+}
+
+.form-item input {
+  padding: 1rem 0.5rem;
+  font-size: 1.8rem;
+  width: 75%;
+  height: 3rem;
+  flex-shrink: inherit;
+  text-align: center;
+  color: green;
+}
+
 /* Resizing properties for phone screen */
 @media screen and (max-width: 576px) {
   .nav-container {
@@ -351,5 +376,8 @@ button:hover::after {
     text-align: center;
     margin: 0 1rem;
     padding: 2rem;
+  }
+  .form-item input {
+    width: 100%;
   }
 }
