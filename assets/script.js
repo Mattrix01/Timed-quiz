@@ -1,3 +1,4 @@
+// My array of question, options and answer objects
 var questions = [
   {
     question: "What does DOM stand for?",
