@@ -38,13 +38,27 @@ var questions = [
 ];
 
 // render question container
-const renderQuestionContainer = function () {};
+const renderQuestionContainer = function () {
+  console.log("renderquestioncontainer");
+  //get current question
+  //contrust html for the question container
+  //append the container to document
+};
+
+const removeStartContainer = function () {
+  // target start container
+  const startContainer = document.getElementById("start-container");
+  // remove from document
+  startContainer.remove();
+};
 
 // function to execute when start quiz is called
 const startQuiz = function () {
   // console.log("start quiz");
   // remove start container
+  removeStartContainer();
   // render question container
+  renderQuestionContainer();
 };
 
 // target the start quiz button
