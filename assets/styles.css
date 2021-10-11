@@ -23,7 +23,7 @@ body {
 .header {
   color: var(--gainsboro);
   font-size: 1.6rem;
-  background-color: var(--ming);
+  background-color: var(--indigo-dye);
 }
 
 .nav-container {
@@ -32,9 +32,37 @@ body {
   justify-content: space-between;
 }
 
+/* flashing time remaining styling */
+.nav-item {
+  animation: blinkingText 0.5s infinite;
+}
+@keyframes blinkingText {
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  49% {
+    color: rgb(255, 0, 0);
+  }
+  60% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: rgb(255, 0, 0);
+  }
+}
+
 .nav-item {
   padding: 2rem;
   font-size: 1.6rem;
+}
+
+.nav-item a:hover {
+  color: white;
+  text-shadow: 1px 1px 10px #fff, 1px 1px 10px #ccc;
+  transition: all 0.5s ease;
 }
 
 .nav-item a {
@@ -60,13 +88,14 @@ body {
   padding: 3rem;
 }
 
+/* Button styling */
 button,
 button::after {
   width: 380px;
   height: 86px;
   font-size: 36px;
   font-family: "Bebas Neue", cursive;
-  background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+  background: linear-gradient(45deg, transparent 5%, var(--indigo-dye) 5%);
   border: 0;
   color: var(--gainsboro);
   letter-spacing: 3px;
@@ -74,6 +103,7 @@ button::after {
   box-shadow: 6px 0px 0px var(--gainsboro);
   outline: transparent;
   position: relative;
+  cursor: pointer;
 }
 
 button::after {
@@ -96,9 +126,9 @@ button::after {
     transparent 3%,
     #00e6f6 3%,
     #00e6f6 5%,
-    #ff013c 5%
+    var(--indigo-dye) 5%
   );
-  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+  text-shadow: -3px -3px 0px #f8ff98, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
 }
 
