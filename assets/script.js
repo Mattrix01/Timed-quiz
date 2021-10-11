@@ -58,7 +58,6 @@ const constructQuestionContainer = function (question) {
 
 // render question container
 const renderQuestionContainer = function () {
-  console.log(currentQuestion);
   //get current question
   const currentQuestion = codeQuestions[0];
   console.log(currentQuestion);
