@@ -4,7 +4,7 @@
   --ming: #3c6e71ff;
   --white: #ffffffff;
   --gainsboro: #d9d9d9ff;
-  --indigo-dye: #284b63ff;
+  --indigo-dye: rgb(43, 105, 1);
 }
 
 * {
@@ -16,14 +16,19 @@ body {
   font-family: "Orbitron", sans-serif;
   line-height: 1.4;
   font-size: 10px;
-  background-color: var(--jet);
+  background-color: rgb(24, 24, 24);
   color: var(--gainsboro);
 }
 
 .header {
   color: var(--gainsboro);
   font-size: 1.6rem;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
+    url(./background-matrix.jpg);
   background-color: var(--indigo-dye);
+  background-position: center;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 .nav-container {
@@ -34,7 +39,7 @@ body {
 
 /* flashing time remaining styling */
 .nav-item {
-  animation: blinkingText 0.5s infinite;
+  animation: blinkingText 01s infinite;
 }
 @keyframes blinkingText {
   0% {
@@ -55,8 +60,12 @@ body {
 }
 
 .nav-item {
-  padding: 2rem;
+  padding: 1rem;
   font-size: 1.6rem;
+}
+
+.nav-item span {
+  font-size: 3rem;
 }
 
 .nav-item a:hover {
@@ -68,10 +77,16 @@ body {
 .nav-item a {
   text-decoration: none;
   color: var(--gainsboro);
+  font-size: 2.5rem;
 }
 
 .main {
   font-size: 1.5rem;
+}
+
+.container {
+  margin: 0 2rem;
+  padding: 3rem;
 }
 
 .title {
@@ -84,17 +99,19 @@ body {
 
 .start-container {
   text-align: center;
-  margin: 0 2rem;
-  padding: 3rem;
 }
 
-/* Button styling */
-button,
-button::after {
+button {
+  margin: 0.2rem;
+}
+
+/* Button begin styling */
+.button-begin,
+.button-begin::after {
   width: 380px;
   height: 86px;
   font-size: 36px;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Orbitron", sans-serif;
   background: linear-gradient(45deg, transparent 5%, var(--indigo-dye) 5%);
   border: 0;
   color: var(--gainsboro);
@@ -104,9 +121,10 @@ button::after {
   outline: transparent;
   position: relative;
   cursor: pointer;
+  border-radius: 0.4rem;
 }
 
-button::after {
+.button-begin::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -114,7 +132,7 @@ button::after {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: "AVAILABLE NOW";
+  content: "ANSWER!";
   display: block;
   position: absolute;
   top: 0;
@@ -128,7 +146,104 @@ button::after {
     #00e6f6 5%,
     var(--indigo-dye) 5%
   );
-  text-shadow: -3px -3px 0px #f8ff98, 3px 3px 0px #00e6f6;
+  text-shadow: -3px -3px 0px #5eff00, 3px 3px 0px #00e6f6;
+  clip-path: var(--slice-0);
+}
+
+.button-begin:hover::after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+/* Button question styling */
+button,
+button::after {
+  width: 400px;
+  height: 50px;
+  font-size: 36px;
+  font-family: "Orbitron", sans-serif;
+  background: linear-gradient(45deg, transparent 5%, var(--indigo-dye) 5%);
+  border: 0;
+  color: var(--gainsboro);
+  letter-spacing: 3px;
+  line-height: 50px;
+  box-shadow: 6px 0px 0px var(--gainsboro);
+  outline: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+
+button::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: "ANSWER!";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 3%,
+    #00e6f6 3%,
+    #00e6f6 5%,
+    var(--indigo-dye) 5%
+  );
+  text-shadow: -3px -3px 0px #5eff00, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
 }
 
@@ -182,6 +297,26 @@ button:hover::after {
     clip-path: var(--slice-1);
     transform: translate(0);
   }
+}
+
+.question-container {
+  text-align: center;
+}
+
+.question {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+.options.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 2rem;
+}
+
+.option-item {
+  margin: 0.6rem 0;
+  font-size: 2rem;
 }
 
 /* Resizing properties for phone screen */
