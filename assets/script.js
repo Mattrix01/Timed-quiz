@@ -1,14 +1,9 @@
 // My array of question, options and answer objects
 const codeQuestions = [
   {
-    title: "What does DOM stand for?",
-    options: [
-      "Delete Original Method",
-      "Data Ordered Method",
-      "Document Object Model",
-      "Dinner On Matress",
-    ],
-    correctOption: "Document Object Model",
+    title: "What is the correct syntax for a comment in Javascript",
+    options: ["<--", "cmt", "//", "/*"],
+    correctOption: "//",
   },
   {
     title: "A JavaScript File Has An Extension of?",
@@ -26,14 +21,10 @@ const codeQuestions = [
     correctOption: "[]",
   },
   {
-    title: "A integer is A number with...?",
-    options: [
-      "A decimal fraction",
-      "A seperation",
-      "A personality",
-      "No decimal fraction",
-    ],
-    correctOption: "No decimal fraction",
+    title:
+      "Which of the following is not a way to declare a variable in javascript?",
+    options: ["let name", "var name", "const name", "item name"],
+    correctOption: "item name",
   },
 ];
 

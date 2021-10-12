@@ -382,9 +382,9 @@ button:hover::after {
     align-items: center;
   }
 
-  .start-container {
+  .container {
     text-align: center;
-    margin: 0 1rem;
+    margin: 4 1rem;
     padding: 2rem;
   }
   .form-item input {
