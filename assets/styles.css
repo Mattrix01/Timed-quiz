@@ -332,12 +332,14 @@ button:hover::after {
   color: green;
   /* background-color: var(--indigo-dye);
   border-color: var(--alert-success-border); */
+  font-size: 2rem;
 }
 
 .answer-alert-danger {
   color: red;
   /* background-color: var(--indigo-dye);
   border-color: var(--alert-danger-border); */
+  font-size: 2rem;
 }
 
 .score-form {

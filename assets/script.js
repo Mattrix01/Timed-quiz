@@ -37,25 +37,26 @@ const codeQuestions = [
   },
 ];
 
-//timer set to count of question, 10 seconds for each.
 let count = codeQuestions.length * 10;
-
+// let count = 5;
 let currentQuestionIndex = 0;
 
 const constructOptions = function (options) {
   const optionsContainer = document.createElement("div");
   optionsContainer.setAttribute("class", "options-container");
+
   for (let i = 0; i < options.length; i++) {
-    // get the currrent option from array
+    // get the current option from array
     const option = options[i];
-    // create button
+
+    // create my button
     const optionButton = document.createElement("button");
     optionButton.setAttribute("class", "option-item");
     optionButton.setAttribute("name", "option");
     optionButton.setAttribute("data-option", option);
     optionButton.textContent = option;
 
-    //append to options container
+    // append to optionsContainer
     optionsContainer.appendChild(optionButton);
   }
 
@@ -63,12 +64,10 @@ const constructOptions = function (options) {
 };
 
 const constructAlert = function (className, text) {
-  //construct div
+  // construct div
   const alertDiv = document.createElement("div");
-
   alertDiv.setAttribute("class", className);
   alertDiv.textContent = text;
-  //
 
   return alertDiv;
 };
@@ -81,7 +80,6 @@ const constructForm = function () {
 
   const h2Element = document.createElement("h2");
   h2Element.setAttribute("class", "question");
-
   h2Element.textContent = "Your score is " + count;
 
   const formContainer = document.createElement("div");
@@ -97,7 +95,7 @@ const constructForm = function () {
   formButtonDiv.setAttribute("class", "form-item");
 
   const formButton = document.createElement("button");
-  formButton.setAttribute("class", "button-begin");
+  formButton.setAttribute("class", "button");
   formButton.textContent = "Submit";
 
   formInputDiv.append(formInput);
@@ -112,18 +110,18 @@ const constructForm = function () {
 };
 
 const renderSuccessAlert = function () {
-  // contruct alert
+  // construct alert
   const alert = constructAlert(
     "container answer-alert answer-alert-success",
-    "You are correct!"
+    "Correct Answer!"
   );
 
   // append the alert to the document
-  document.getElementById("main-container").appendChild(alert);
+  document.getElementById("alert-container").appendChild(alert);
 
-  // declare timeout function (to remove the element)
+  // declare a timeout function (to remove the element)
   const afterWait = function () {
-    //remove the alert
+    // remove alert
     alert.remove();
 
     // kill timeout
@@ -135,18 +133,18 @@ const renderSuccessAlert = function () {
 };
 
 const renderDangerAlert = function () {
-  // contruct alert
+  // construct alert
   const alert = constructAlert(
     "container answer-alert answer-alert-danger",
-    "Incorrect answer!"
+    "Wrong Answer!"
   );
 
   // append the alert to the document
-  document.getElementById("main-container").appendChild(alert);
+  document.getElementById("alert-container").appendChild(alert);
 
-  // declare timeout function (to remove the element)
+  // declare a timeout function (to remove the element)
   const afterWait = function () {
-    //remove the alert
+    // remove alert
     alert.remove();
 
     // kill timeout
@@ -158,42 +156,42 @@ const renderDangerAlert = function () {
 };
 
 const renderScoreForm = function () {
-  //remove the last question
+  // remove the last question
   removeQuestionContainer();
 
-  //construct score form
+  // construct score form
   const form = constructForm();
 
-  //append form to document
+  // append form to document
   document.getElementById("main-container").append(form);
 };
 
 const verifyAnswer = function (event) {
-  console.log("verifyAnswer");
   const target = event.target;
   const currentTarget = event.currentTarget;
+
   // check if click is from button ONLY
   if (target.getAttribute("name") === "option") {
-    // get the option user clciked on
+    // get the option user clicked on
     const userOption = target.getAttribute("data-option");
-    //get the correct option for the question
+
+    // get the correct option for the question
     const correctOption = currentTarget.getAttribute("data-correct");
+
     console.log(userOption, correctOption);
-    // verify the two
+
+    // verify the 2
     if (userOption !== correctOption) {
-      // time penalty if wrong deduct 10 seconds
+      // time penalty deduct 5 seconds
       count -= 10;
       renderDangerAlert();
     } else {
       console.log("CORRECT");
       renderSuccessAlert();
     }
-    // go to next question
-    currentQuestionIndex += 1;
 
-    // render the next question
-    removeQuestionContainer();
-    renderQuestionContainer();
+    // go to next question 0 1 2 (3)
+    currentQuestionIndex += 1;
 
     // check if last question
     if (currentQuestionIndex < codeQuestions.length) {
@@ -212,7 +210,6 @@ const constructQuestionContainer = function (question) {
   questionContainer.setAttribute("class", "container question-container");
   questionContainer.setAttribute("id", "question-container");
   questionContainer.setAttribute("data-correct", question.correctOption);
-  //
 
   // construct h2 element
   const questionH2 = document.createElement("h2");
@@ -222,10 +219,10 @@ const constructQuestionContainer = function (question) {
   // construct options div
   const options = constructOptions(question.options);
 
-  //append h2 and options div to container div
+  // appending h2 and options div to container div
   questionContainer.append(questionH2, options);
-  // add event listener to listen for click events
 
+  // add event listener to listen for click events
   questionContainer.addEventListener("click", verifyAnswer);
 
   return questionContainer;
@@ -251,46 +248,44 @@ const removeStartContainer = function () {
 };
 
 const removeQuestionContainer = function () {
-  //target question container
+  // target question container
   const questionContainer = document.getElementById("question-container");
-  // Then remove it from document
+  // remove from document
   questionContainer.remove();
 };
 
 const startTimer = function () {
-  //declare timer
+  // declare the timer tick function
   const timerTick = function () {
-    // stop timer when 0
-    // stop timer when no more questions
     if (currentQuestionIndex >= codeQuestions.length) {
       clearInterval(timer);
     } else if (count < 0) {
       clearInterval(timer);
-      console.log("GAM OVER!");
+      console.log("GAME OVER");
     } else {
       document.getElementById("countdown").textContent = count;
       count -= 1;
     }
   };
 
-  // declare timer tick function
+  // declare the timer
   const timer = setInterval(timerTick, 1000);
 };
 
-// function to execute when start quiz is called
+// function to execute when start button is called
 const startQuiz = function () {
-  // console.log("start quiz");
   // remove start container
   removeStartContainer();
+
   // render question container
   renderQuestionContainer();
 
-  //start timer
+  // start timer
   startTimer();
 };
 
 // target the start quiz button
 const startButton = document.getElementById("start-quiz");
 
-// add a click event listener and start the quiz
+// add a click event listener and start quiz
 startButton.addEventListener("click", startQuiz);
