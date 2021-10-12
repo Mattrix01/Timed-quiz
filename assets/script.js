@@ -45,7 +45,7 @@ const constructOptions = function (options) {
     const option = options[i];
     // create button
     const optionButton = document.createElement("button");
-    optionButton.setAttribute("class", "options-item");
+    optionButton.setAttribute("class", "option-item");
     optionButton.textContent = option;
 
     //append to options container
