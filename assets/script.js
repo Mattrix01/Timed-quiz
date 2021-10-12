@@ -40,6 +40,8 @@ const codeQuestions = [
 //timer set to count of question, 10 seconds for each.
 let count = codeQuestions.length * 10;
 
+let currentQuestionIndex = 0;
+
 const constructOptions = function (options) {
   const optionsContainer = document.createElement("div");
   optionsContainer.setAttribute("class", "options-container");
@@ -73,9 +75,25 @@ const verifyAnswer = function (event) {
     console.log(userOption, correctOption);
     // verify the two
     if (userOption !== correctOption) {
-      console.log("WRONG");
+      // time penalty if wrong deduct 10 seconds
+      count -= 10;
     } else {
       console.log("CORRECT");
+    }
+    // go to next question
+    currentQuestionIndex += 1;
+
+    // render the next question
+    removeQuestionContainer();
+    renderQuestionContainer();
+
+    // check if last question
+    if (currentQuestionIndex < codeQuestions.length) {
+      // render the next question
+      removeQuestionContainer();
+      renderQuestionContainer();
+    } else {
+      console.log("RENDER SCORE FORM");
     }
   }
 };
@@ -85,6 +103,7 @@ const constructQuestionContainer = function (question) {
   // contsruct container div
   const questionContainer = document.createElement("div");
   questionContainer.setAttribute("class", "container question-container");
+  questionContainer.setAttribute("id", "question-container");
   questionContainer.setAttribute("data-correct", question.correctOption);
   //
 
@@ -109,7 +128,7 @@ const constructQuestionContainer = function (question) {
 // render question container, called from clicking start button
 const renderQuestionContainer = function () {
   //get current question
-  const currentQuestion = codeQuestions[0];
+  const currentQuestion = codeQuestions[currentQuestionIndex];
   console.log(currentQuestion);
 
   //construct html for the question container
@@ -125,11 +144,18 @@ const removeStartContainer = function () {
   startContainer.remove();
 };
 
+const removeQuestionContainer = function () {
+  //target question container
+  const questionContainer = document.getElementById("question-container");
+  // Then remove it from document
+  questionContainer.remove();
+};
+
 const startTimer = function () {
   //declare timer
   const timerTick = function () {
     // check if the countdown has reached 0
-    if (count >= 0) {
+    if (count >= 0 && currentQuestionIndex < codeQuestions.length) {
       //render the countdown time in the document
       document.getElementById("countdown").textContent = count;
       count -= 1;
