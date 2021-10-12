@@ -37,7 +37,23 @@ const codeQuestions = [
   },
 ];
 
-const constructOptions = function (options) {};
+const constructOptions = function (options) {
+  const optionsContainer = document.createElement("div");
+  optionsContainer.setAttribute("class", "options-container");
+  for (let i = 0; i < options.length; i++) {
+    // get the currrent option from array
+    const option = options[i];
+    // create button
+    const optionButton = document.createElement("button");
+    optionButton.setAttribute("class", "options-item");
+    optionButton.textContent = option;
+
+    //append to options container
+    optionsContainer.appendChild(optionButton);
+  }
+
+  return optionsContainer;
+};
 
 const constructQuestionContainer = function (question) {
   console.log(question);
@@ -45,15 +61,17 @@ const constructQuestionContainer = function (question) {
   const questionContainer = document.createElement("div");
   questionContainer.setAttribute("class", "container question-container");
 
-  console.log(questionContainer);
-
   // construct h2 element
   const questionH2 = document.createElement("h2");
   questionH2.setAttribute("class", "question");
   questionH2.textContent = question.title;
 
   // construct options div
-  constructOptions(question.options);
+  const options = constructOptions(question.options);
+  console.log(options);
+
+  //append h2 and options div to container div
+  questionContainer.append(questionH2, options);
 };
 
 // render question container
