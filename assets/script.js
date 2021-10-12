@@ -62,6 +62,64 @@ const constructOptions = function (options) {
   return optionsContainer;
 };
 
+const constructAlert = function (className, text) {
+  //construct div
+  const alertDiv = document.createElement("div");
+
+  alertDiv.setAttribute("class", className);
+  alertDiv.textContent = text;
+  //
+
+  return alertDiv;
+};
+
+const renderSuccessAlert = function () {
+  // contruct alert
+  const alert = constructAlert(
+    "container answer-alert answer-alert-success",
+    "You are correct!"
+  );
+
+  // append the alert to the document
+  document.getElementById("main-container").appendChild(alert);
+
+  // declare timeout function (to remove the element)
+  const afterWait = function () {
+    //remove the alert
+    alert.remove();
+
+    // kill timeout
+    clearTimeout(delay);
+  };
+
+  // start a timeout (delay)
+  const delay = setTimeout(afterWait, 1000);
+};
+
+const renderDangerAlert = function () {
+  // contruct alert
+  const alert = constructAlert(
+    "container answer-alert answer-alert-danger",
+    "Incorrect answer!"
+  );
+
+  // append the alert to the document
+  document.getElementById("main-container").appendChild(alert);
+
+  // declare timeout function (to remove the element)
+  const afterWait = function () {
+    //remove the alert
+    alert.remove();
+
+    // kill timeout
+    clearTimeout(delay);
+  };
+
+  // start a timeout (delay)
+  const delay = setTimeout(afterWait, 1000);
+};
+
+//
 const verifyAnswer = function (event) {
   console.log("verifyAnswer");
   const target = event.target;
@@ -77,8 +135,10 @@ const verifyAnswer = function (event) {
     if (userOption !== correctOption) {
       // time penalty if wrong deduct 10 seconds
       count -= 10;
+      renderDangerAlert();
     } else {
       console.log("CORRECT");
+      renderSuccessAlert();
     }
     // go to next question
     currentQuestionIndex += 1;
