@@ -72,17 +72,20 @@ const constructQuestionContainer = function (question) {
 
   //append h2 and options div to container div
   questionContainer.append(questionH2, options);
+
+  return questionContainer;
 };
 
-// render question container
+// render question container, called from clicking start button
 const renderQuestionContainer = function () {
   //get current question
   const currentQuestion = codeQuestions[0];
   console.log(currentQuestion);
 
   //construct html for the question container
-  constructQuestionContainer(currentQuestion);
+  const questionContainer = constructQuestionContainer(currentQuestion);
   //append the container to document
+  document.getElementById("main-container").appendChild(questionContainer);
 };
 
 const removeStartContainer = function () {
