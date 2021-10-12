@@ -49,6 +49,8 @@ const constructOptions = function (options) {
     // create button
     const optionButton = document.createElement("button");
     optionButton.setAttribute("class", "option-item");
+    optionButton.setAttribute("name", "option");
+    optionButton.setAttribute("data-option", option);
     optionButton.textContent = option;
 
     //append to options container
@@ -58,11 +60,33 @@ const constructOptions = function (options) {
   return optionsContainer;
 };
 
+const verifyAnswer = function (event) {
+  console.log("verifyAnswer");
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+  // check if click is from button ONLY
+  if (target.getAttribute("name") === "option") {
+    // get the option user clciked on
+    const userOption = target.getAttribute("data-option");
+    //get the correct option for the question
+    const correctOption = currentTarget.getAttribute("data-correct");
+    console.log(userOption, correctOption);
+    // verify the two
+    if (userOption !== correctOption) {
+      console.log("WRONG");
+    } else {
+      console.log("CORRECT");
+    }
+  }
+};
+
 const constructQuestionContainer = function (question) {
   console.log(question);
   // contsruct container div
   const questionContainer = document.createElement("div");
   questionContainer.setAttribute("class", "container question-container");
+  questionContainer.setAttribute("data-correct", question.correctOption);
+  //
 
   // construct h2 element
   const questionH2 = document.createElement("h2");
@@ -75,6 +99,9 @@ const constructQuestionContainer = function (question) {
 
   //append h2 and options div to container div
   questionContainer.append(questionH2, options);
+  // add event listener to listen for click events
+
+  questionContainer.addEventListener("click", verifyAnswer);
 
   return questionContainer;
 };
