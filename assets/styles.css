@@ -372,6 +372,7 @@ button:hover::after {
   text-align: center;
   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
     url(./background-matrix.jpg);
+  margin-top: 4rem;
 }
 
 /* Resizing properties for phone screen */
