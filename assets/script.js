@@ -73,6 +73,44 @@ const constructAlert = function (className, text) {
   return alertDiv;
 };
 
+const constructForm = function () {
+  const divContainer = document.createElement("div");
+  divContainer.setAttribute("class", "container score-form");
+
+  const form = document.createElement("form");
+
+  const h2Element = document.createElement("h2");
+  h2Element.setAttribute("class", "question");
+
+  h2Element.textContent = "Your score is " + count;
+
+  const formContainer = document.createElement("div");
+  formContainer.setAttribute("class", "form-container");
+
+  const formInputDiv = document.createElement("div");
+  formInputDiv.setAttribute("class", "form-item");
+
+  const formInput = document.createElement("input");
+  formInput.setAttribute("placeholder", "Enter your initials");
+
+  const formButtonDiv = document.createElement("div");
+  formButtonDiv.setAttribute("class", "form-item");
+
+  const formButton = document.createElement("button");
+  formButton.setAttribute("class", "button-begin");
+  formButton.textContent = "Submit";
+
+  formInputDiv.append(formInput);
+  formButtonDiv.append(formButton);
+
+  formContainer.append(formInputDiv, formButtonDiv);
+
+  form.append(h2Element, formContainer);
+  divContainer.append(form);
+
+  return divContainer;
+};
+
 const renderSuccessAlert = function () {
   // contruct alert
   const alert = constructAlert(
@@ -119,7 +157,17 @@ const renderDangerAlert = function () {
   const delay = setTimeout(afterWait, 1000);
 };
 
-//
+const renderScoreForm = function () {
+  //remove the last question
+  removeQuestionContainer();
+
+  //construct score form
+  const form = constructForm();
+
+  //append form to document
+  document.getElementById("main-container").append(form);
+};
+
 const verifyAnswer = function (event) {
   console.log("verifyAnswer");
   const target = event.target;
@@ -153,14 +201,13 @@ const verifyAnswer = function (event) {
       removeQuestionContainer();
       renderQuestionContainer();
     } else {
-      console.log("RENDER SCORE FORM");
+      renderScoreForm();
     }
   }
 };
 
 const constructQuestionContainer = function (question) {
-  console.log(question);
-  // contsruct container div
+  // construct container div
   const questionContainer = document.createElement("div");
   questionContainer.setAttribute("class", "container question-container");
   questionContainer.setAttribute("id", "question-container");
@@ -174,7 +221,6 @@ const constructQuestionContainer = function (question) {
 
   // construct options div
   const options = constructOptions(question.options);
-  console.log(options);
 
   //append h2 and options div to container div
   questionContainer.append(questionH2, options);
@@ -185,15 +231,15 @@ const constructQuestionContainer = function (question) {
   return questionContainer;
 };
 
-// render question container, called from clicking start button
+// render question container
 const renderQuestionContainer = function () {
-  //get current question
+  // get the current question
   const currentQuestion = codeQuestions[currentQuestionIndex];
-  console.log(currentQuestion);
 
-  //construct html for the question container
+  // construct the HTML for the question container
   const questionContainer = constructQuestionContainer(currentQuestion);
-  //append the container to document
+
+  // append the container to the document
   document.getElementById("main-container").appendChild(questionContainer);
 };
 
@@ -214,15 +260,16 @@ const removeQuestionContainer = function () {
 const startTimer = function () {
   //declare timer
   const timerTick = function () {
-    // check if the countdown has reached 0
-    if (count >= 0 && currentQuestionIndex < codeQuestions.length) {
-      //render the countdown time in the document
+    // stop timer when 0
+    // stop timer when no more questions
+    if (currentQuestionIndex >= codeQuestions.length) {
+      clearInterval(timer);
+    } else if (count < 0) {
+      clearInterval(timer);
+      console.log("GAM OVER!");
+    } else {
       document.getElementById("countdown").textContent = count;
       count -= 1;
-    } else {
-      //render game over container when timer less than 0
-      console.log("gameover");
-      clearInterval(timer);
     }
   };
 
