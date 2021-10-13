@@ -11,16 +11,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/styles.css" />
-    <title>HighScores</title>
+    <title>Code Quiz | Highscores</title>
   </head>
   <body>
     <header class="header">
       <nav class="nav-container">
         <div class="nav-item">
-          <a href="./index.html">Quiz Home</a>
+          <a href="./index.html">Home</a>
         </div>
       </nav>
     </header>
+    <main id="main-container">
+      <div class="container start-container" id="start-container">
+        <h1 class="title">High Scores</h1>
+        <div id="high-scores"></div>
+      </div>
+      <div class="container btn-container">
+        <div>
+          <button class="button" id="go-back-btn">Go Back</button>
+        </div>
+        <div>
+          <button class="button" id="clear-scores-btn">Clear Scores</button>
+        </div>
+      </div>
+    </main>
     <script src="./assets/highscores.js"></script>
   </body>
 </html>
