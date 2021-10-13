@@ -6,9 +6,9 @@ A quiz testing coding skills using HTML, CSS and Javascript with a timer that de
 
 ## GitHub Pages Link
 
-https://github.com/Mattrix01/My-Portfolio
+Repository - https://github.com/Mattrix01/My-Portfolio
 
-Deployment link:
+Deployment link: https://mattrix01.github.io/Timed-quiz/
 
 ## Technologies Used
 
@@ -95,6 +95,4 @@ Deployment link:
 
 ## web page screenshot
 
-![webpage screenshot 1](images/page-screenshot-top.png)
-
-![webpage screenshot 1](images/page-screenshot-bottom.png)
+![webpage screenshot](assets/code-quiz-mobile-screenshots.jpg)
