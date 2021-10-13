@@ -84,8 +84,6 @@ const storeScore = function () {
     initials: initials,
   };
 
-  console.log(scoreObject);
-
   // get form local storage before inserting object
   const highscores = getFromLocalStorage("highscores", []);
 
