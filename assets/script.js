@@ -205,16 +205,17 @@ const verifyAnswer = function (event) {
     // get the correct option for the question
     const correctOption = currentTarget.getAttribute("data-correct");
 
-    console.log(userOption, correctOption);
-
     // verify the 2
     if (userOption !== correctOption) {
-      // time penalty deduct 5 seconds
+      // time penalty deduct 10 seconds
       count -= 10;
-      document.getElementById("countdown").textContent = count;
       renderDangerAlert();
+      if (count > 0) {
+        document.getElementById("countdown").textContent = count;
+      } else {
+        document.getElementById("countdown").textContent = 0;
+      }
     } else {
-      console.log("CORRECT");
       renderSuccessAlert();
     }
 
@@ -227,7 +228,12 @@ const verifyAnswer = function (event) {
       removeQuestionContainer();
       renderQuestionContainer();
     } else {
-      renderScoreForm();
+      if (count > 0) {
+        renderScoreForm();
+      } else {
+        removeQuestionContainer();
+        renderGameOver();
+      }
     }
   }
 };
