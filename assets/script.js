@@ -303,7 +303,7 @@ const startTimer = function () {
   const timerTick = function () {
     if (currentQuestionIndex >= codeQuestions.length) {
       clearInterval(timer);
-    } else if (count < 0) {
+    } else if (count <= 0) {
       clearInterval(timer);
       removeQuestionContainer();
       renderGameOver();
