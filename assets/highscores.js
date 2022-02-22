@@ -58,6 +58,7 @@ const goBackBtn = document.getElementById("go-back-btn");
 const clearScoresBtn = document.getElementById("clear-scores-btn");
 
 const goBack = function () {
+  // location fixed
   location.assign("./index.html");
 };
 
